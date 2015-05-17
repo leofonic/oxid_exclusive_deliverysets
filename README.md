@@ -1,4 +1,4 @@
-﻿OXID Exclusive Deliverysets
+﻿OXID Exclusive Shipping Methods
 ===============================
 
 OXID eShop: With this module, you can set shipping methods exclusive. If such a shipping method is valid, all other shipping methods are hidden.
