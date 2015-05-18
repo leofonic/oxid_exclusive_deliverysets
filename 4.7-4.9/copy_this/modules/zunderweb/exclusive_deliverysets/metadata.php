@@ -14,6 +14,7 @@ $aModule = array(
     'version'      => '0.1',
     'extend' => array(
         'oxdeliverysetlist' => 'zunderweb/exclusive_deliverysets/models/exclusive_deliverysets_oxdeliverysetlist',
+        'oxdeliverylist' => 'zunderweb/exclusive_deliverysets/models/exclusive_deliverysets_oxdeliverylist',
     ),
     'files' => array(
     ),
