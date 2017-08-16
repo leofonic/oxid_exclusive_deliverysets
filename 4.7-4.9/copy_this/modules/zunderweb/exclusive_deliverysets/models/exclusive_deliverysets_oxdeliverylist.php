@@ -15,8 +15,8 @@ class exclusive_deliverysets_oxdeliverylist extends exclusive_deliverysets_oxdel
             $aDeliveries = $this->_getList($oUser, $sDelCountry, $sDeliverySetId);
             $blDelFound = false;
 
+            $aFoundDeliveries = array();
             foreach ($aDeliveries as $sDeliveryId => $oDelivery) {
-                $aFoundDeliveries = array();
 
                 // skipping that was checked and didn't fit before
                 if (in_array($sDeliveryId, $aSkipDeliveries)) {
