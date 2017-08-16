@@ -14,8 +14,8 @@ class exclusive_deliverysets_oxdeliverylist extends exclusive_deliverysets_oxdel
             // loading delivery list to check if some of them fits
             $aDeliveries = $this->_getList($oUser, $sDelCountry, $sDeliverySetId);
             $blDelFound = false;
-
             $aFoundDeliveries = array();
+
             foreach ($aDeliveries as $sDeliveryId => $oDelivery) {
 
                 // skipping that was checked and didn't fit before

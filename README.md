@@ -5,4 +5,4 @@ OXID eShop: With this module, you can set shipping methods exclusive. If such a 
 
 Legen Sie fest dass bestimmte Versandarten exclusiv erscheinen. Wenn eine solche Versandart gültig ist, werden alle anderen Versandarten ausgeblendet.
 
-Suitable for OXID Version 4.7-4.9 (other versions not tested)
+Suitable for OXID Version 4.7-4.10 (other versions not tested)
