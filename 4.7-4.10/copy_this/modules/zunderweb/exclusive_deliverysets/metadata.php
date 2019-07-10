@@ -24,5 +24,6 @@ $aModule = array(
     ),
     'settings'    => array(
         array('group' => 'exclusive_deliverysets_main', 'name' => 'aExclusiveDeliverysets', 'type' => 'arr',  'value' => array('')),
+        array('group' => 'exclusive_deliverysets_main', 'name' => 'aImportantDeliverysets', 'type' => 'arr',  'value' => array('')),
     )
 );

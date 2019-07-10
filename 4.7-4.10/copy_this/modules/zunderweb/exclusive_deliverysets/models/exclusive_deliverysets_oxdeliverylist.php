@@ -3,7 +3,7 @@ class exclusive_deliverysets_oxdeliverylist extends exclusive_deliverysets_oxdel
 {
     public function getDeliveryList($oBasket, $oUser = null, $sDelCountry = null, $sDelSet = null)
     {
-        $aCollectedDeliveries = array();
+        $aCollectedDeliveries = $aFittingDelSets = array();
         
         // ids of deliveries that does not fit for us to skip double check
         $aSkipDeliveries = array();
@@ -55,7 +55,7 @@ class exclusive_deliverysets_oxdeliverylist extends exclusive_deliverysets_oxdel
         }
 
         //return deliveries sets if found
-        if ($this->_blCollectFittingDeliveriesSets && count($aFittingDelSets)) {
+        if ($this->_blCollectFittingDeliveriesSets) {
 
             //resetting getting delivery sets list instead of deliveries before return
             $this->_blCollectFittingDeliveriesSets = false;
@@ -69,14 +69,20 @@ class exclusive_deliverysets_oxdeliverylist extends exclusive_deliverysets_oxdel
 
         // return collected fitting deliveries
         $aExclusiveDeliverysets = $this->getConfig()->getConfigParam( "aExclusiveDeliverysets" );
+        $aImportantDeliverysets = $this->getConfig()->getConfigParam( "aImportantDeliverysets" );
         if (count($aCollectedDeliveries)){
             $aIds = array_keys($aCollectedDeliveries);
-            foreach ($aCollectedDeliveries as $sDeliverySetId => $aDeliveries){
-                if (in_array($sDeliverySetId, $aExclusiveDeliverysets)){
-                    oxRegistry::getSession()->setVariable('sShipSet', $sDeliverySetId);
-                    return $aDeliveries;
+            //Current Shippingset not member of exclusive or important shipping sets
+            if (!in_array($aIds[0], $aExclusiveDeliverysets) && !in_array($aIds[0], $aImportantDeliverysets)){
+                //Set selected Shipset to exclusive Set if present and valid
+                foreach ($aCollectedDeliveries as $sDeliverySetId => $aDeliveries){
+                    if ( in_array($sDeliverySetId, $aExclusiveDeliverysets)){
+                        oxRegistry::getSession()->setVariable('sShipSet', $sDeliverySetId);
+                        return $aDeliveries;
+                    }
                 }
             }
+            //otherwise keep current selection
             oxRegistry::getSession()->setVariable('sShipSet', $aIds[0]);
             return array_shift($aCollectedDeliveries);
         }
