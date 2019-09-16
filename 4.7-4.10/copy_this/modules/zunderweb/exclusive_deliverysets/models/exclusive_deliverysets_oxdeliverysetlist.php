@@ -22,7 +22,7 @@ class exclusive_deliverysets_oxdeliverysetlist extends exclusive_deliverysets_ox
                     //update basket
                     $oBasket->setShipping(oxRegistry::getSession()->getVariable('sShipSet'));
                     $oBasket->setDeliveryPrice();
-                    $oBasket->calculateBasket(true);
+                    $oBasket->onUpdate();
                     //get data
                     return parent::getDeliverySetData($sShipSet, $oUser, $oBasket);
                 }
